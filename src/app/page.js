@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import _ from 'lodash';
 import Link from 'next/link';
 import Heros from '@/API/Heroes';
+import Image from 'next/image';
 
 export default function Home() {
 	const [results, setResults] = useState([]);
@@ -26,18 +27,29 @@ export default function Home() {
 		fetchData();
 	}, []);
 
-	const handleSearchChange = e => {
+	const handleSearchChange = (e) => {
 		let value = e.target.value;
 		setValue(value);
 		const re = new RegExp(_.escapeRegExp(value), 'i');
 		const isMatch = (result) => re.test(result.name);
 		setResults(_.filter(herosData, isMatch));
-	}
+	};
 
-	const resultRenderer = ({ name }) => {
-		console.log(name);
-		return <Label content={name} />
-	}
+	const resultRenderer = ({ name, images }) => {
+		return (
+			<div>
+				<Image
+					src={images.md}
+					priority={true}
+					alt={name}
+					width={50}
+					height={50}
+					style={{ width: "auto", height: "auto" }}
+				/>
+				<p className='relative text-right align-top'>{name}</p>
+			</div>
+		);
+	};
 
 	return (
 		<>
