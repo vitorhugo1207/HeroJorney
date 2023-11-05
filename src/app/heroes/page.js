@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Heros from '@/API/Heros';
+import Heros from '@/API/Heroes';
 import { useEffect, useState } from 'react';
 import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import Typography from '@mui/joy/Typography';
-import '../heros/card.css';
+import '../heroes/card.css';
 
 function Cards({ herosData }) {
 	function cardModel(hero) {
