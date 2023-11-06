@@ -57,6 +57,21 @@ export default function Home() {
 		return response;
 	}
 
+	function heroesBackground() {
+		let imgs = [];
+		for (let hero of herosData) {
+			imgs.push(`url(${hero?.images?.lg})`);
+		}
+
+		const style = {
+			backgroundImage: `${imgs.toString()} !important`,
+		};
+
+		console.log(style)
+
+		return style;
+	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await getHerosData();
@@ -78,7 +93,7 @@ export default function Home() {
 
 	return (
 		<>
-			<div className='grid justify-items-center p-20'>
+			<div className='grid justify-items-center p-20' style={heroesBackground()}>
 				<Slogan />
 				<SearchBar herosData={herosData} />
 			</div>

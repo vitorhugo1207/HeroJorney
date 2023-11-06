@@ -7,4 +7,8 @@
     @apply bg-slate-900 !important;
     @apply text-white !important;
   }
+  /* .test {
+    @apply bg-test !important;
+    @apply w-full
+  } */
 }
