@@ -7,8 +7,9 @@ import Heros from '@/API/Heroes';
 import Image from 'next/image';
 import 'semantic-ui-css/semantic.min.css';
 import './results.css';
+import { TypeAnimation } from 'react-type-animation';
 
-function SearchBar({herosData}) {
+function SearchBar({ herosData }) {
 	const [results, setResults] = useState([]);
 	const [value, setValue] = useState('');
 
@@ -37,15 +38,13 @@ function SearchBar({herosData}) {
 	};
 
 	return (
-		<div className='grid grid-cols-1 justify-items-center p-10'>
-			<Search
-				onSearchChange={handleSearchChange}
-				noResultsMessage='Hero no found.'
-				resultRenderer={resultRenderer}
-				results={results}
-				value={value}
-			/>
-		</div>
+		<Search
+			onSearchChange={handleSearchChange}
+			noResultsMessage='Hero no found.'
+			resultRenderer={resultRenderer}
+			results={results}
+			value={value}
+		/>
 	);
 }
 
@@ -66,7 +65,23 @@ export default function Home() {
 		fetchData();
 	}, []);
 
+	function Slogan() {
+		return (
+			<TypeAnimation
+				sequence={['Search Your Hero', 5000]}
+				wrapper='h1'
+				cursor={true}
+				repeat={Infinity}
+			/>
+		);
+	}
+
 	return (
-		<SearchBar herosData={herosData} />
+		<>
+			<div className='grid justify-items-center p-20'>
+				<Slogan />
+				<SearchBar herosData={herosData} />
+			</div>
+		</>
 	);
 }
