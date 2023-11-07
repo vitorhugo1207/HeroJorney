@@ -8,6 +8,7 @@ import Image from 'next/image';
 import 'semantic-ui-css/semantic.min.css';
 import './results.css';
 import { TypeAnimation } from 'react-type-animation';
+import { Black_And_White_Picture } from 'next/font/google';
 
 function SearchBar({ herosData }) {
 	const [results, setResults] = useState([]);
@@ -25,7 +26,7 @@ function SearchBar({ herosData }) {
 		return (
 			<div className='grid grid-cols-2 items-center'>
 				<Image
-					src={images.md}
+					src={images.xs}
 					priority={true}
 					alt={name}
 					width={50}
@@ -60,14 +61,14 @@ export default function Home() {
 	function heroesBackground() {
 		let imgs = [];
 		for (let hero of herosData) {
-			imgs.push(`url(${hero?.images?.lg})`);
+			imgs.push(`url(${hero?.images?.lg}) no-repeat`);
 		}
 
 		const style = {
-			backgroundImage: `${imgs.toString()} !important`,
+			background: imgs.toString(),
 		};
 
-		console.log(style)
+		console.log(style);
 
 		return style;
 	}
@@ -93,7 +94,8 @@ export default function Home() {
 
 	return (
 		<>
-			<div className='grid justify-items-center p-20' style={heroesBackground()}>
+			<div style={heroesBackground()} className='absolute top-0 left-0 right-0 bottom-0 -z-1'></div>
+			<div className='grid justify-items-center p-20'>
 				<Slogan />
 				<SearchBar herosData={herosData} />
 			</div>
