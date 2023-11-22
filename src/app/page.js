@@ -94,7 +94,7 @@ export default function Home() {
 
 	return (
 		<>
-			<div style={heroesBackground()} className='absolute top-0 left-0 right-0 bottom-0 -z-10 opacity-50'/>
+			<div style={heroesBackground()} className='absolute top-0 left-0 right-0 bottom-0 -z-10 opacity-50 backgroundcomicsanimation'/>
 			<div className="bg-[url('../img/backgroundcomics.jpg')] absolute top-0 left-0 right-0 bottom-0 -z-10 opacity-50 bg-cover"/>
 			<div className='grid justify-items-center p-20'>
 				<Slogan />
